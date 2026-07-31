@@ -134,13 +134,13 @@ body{background:var(--bg);color:var(--fg);font-family:'Archivo',sans-serif;overf
 @keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
 .loader-content{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
 .loader-logo-wrap{position:relative;display:flex;align-items:center;justify-content:center}
-.loader-logo-glow{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(0,166,81,.4) 0%,transparent 70%);animation:glowPulse 2s ease-in-out infinite;filter:blur(20px)}
+.loader-logo-glow{position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(0,166,81,.4) 0%,transparent 70%);animation:glowPulse 2s ease-in-out infinite;filter:blur(20px)}
 @keyframes glowPulse{0%,100%{transform:scale(.8);opacity:.5}50%{transform:scale(1.2);opacity:.8}}
-.loader-logo{position:relative;z-index:2;max-width:160px;max-height:90px;width:auto;height:auto;object-fit:contain;animation:logoEntry 1s cubic-bezier(.22,1,.36,1) both,logoFloat 3s ease-in-out infinite 1s;filter:drop-shadow(0 0 20px rgba(0,166,81,.3))}
+.loader-logo{position:relative;z-index:2;max-width:260px;max-height:140px;width:auto;height:auto;object-fit:contain;animation:logoEntry 1s cubic-bezier(.22,1,.36,1) both,logoFloat 3s ease-in-out infinite 1s;filter:drop-shadow(0 0 20px rgba(0,166,81,.3))}
 @keyframes logoEntry{0%{opacity:0;transform:scale(.5) rotate(-10deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
 @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.loader-ring{position:absolute;width:220px;height:220px;border:2px solid transparent;border-top-color:var(--accent);border-right-color:var(--gold);border-radius:50%;animation:ringSpin 1.5s linear infinite;z-index:1}
-.loader-ring-2{position:absolute;width:260px;height:260px;border:1px solid transparent;border-bottom-color:rgba(0,166,81,.3);border-left-color:rgba(255,214,0,.2);border-radius:50%;animation:ringSpin 2.5s linear infinite reverse;z-index:1}
+.loader-ring{position:absolute;width:260px;height:260px;border:2px solid transparent;border-top-color:var(--accent);border-right-color:var(--gold);border-radius:50%;animation:ringSpin 1.5s linear infinite;z-index:1}
+.loader-ring-2{position:absolute;width:300px;height:300px;border:1px solid transparent;border-bottom-color:rgba(0,166,81,.3);border-left-color:rgba(255,214,0,.2);border-radius:50%;animation:ringSpin 2.5s linear infinite reverse;z-index:1}
 @keyframes ringSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 .loader-welcome{text-align:center;margin-top:.5rem}
 .loader-welcome-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,4.5rem);line-height:1;letter-spacing:.05em;display:flex;gap:2px;justify-content:center;flex-wrap:wrap}
@@ -159,7 +159,16 @@ body{background:var(--bg);color:var(--fg);font-family:'Archivo',sans-serif;overf
 .loader-tagline{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;opacity:0;animation:fadeInSub 1s ease 1.5s forwards}
 .loader-scanline{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:scanline 3s linear infinite;opacity:.5;z-index:5}
 @keyframes scanline{0%{top:0}100%{top:100%}}
-@media(max-width:640px){.loader-ring{width:170px;height:170px}.loader-ring-2{width:200px;height:200px}.loader-logo{max-width:130px}}
+@media(max-width:640px){.loader-ring{width:200px;height:200px}.loader-ring-2{width:230px;height:230px}.loader-logo{max-width:200px;max-height:110px}}
+
+/* ==================== ORDER TABS ==================== */
+.order-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.order-tab{padding:.5rem 1.1rem;border:1px solid var(--border-light);background:transparent;color:var(--fg-dim);font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:.4rem}
+.order-tab:hover{border-color:var(--silver-dim);color:var(--fg)}
+.order-tab.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:600}
+.order-tab-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;font-size:.6rem;font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,.15);border-radius:9px}
+.order-tab.active .order-tab-count{background:rgba(0,0,0,.2);color:#000}
+.order-tab.empty{opacity:.4;pointer-events:none}
 </style>
 </head>
 <body>
@@ -174,7 +183,7 @@ body{background:var(--bg);color:var(--fg);font-family:'Archivo',sans-serif;overf
 <div class="loader-logo-glow"></div>
 <div class="loader-ring-2"></div>
 <div class="loader-ring"></div>
-<img src="https://z-cdn-media.chatglm.cn/files/3beb39bd-1b64-4368-b782-8fc9e6330482.png?auth_key=1885394192-8e34d5c8b53244aab906115876c24074-0-44719b1ba6ab7de93c797eda4fb6dc47" alt="Limburg Lubricant Solutions" class="loader-logo">
+<img src="https://z-cdn-media.chatglm.cn/files/c29f52d1-7a90-4b6c-96cb-83b4ed9eae52.png?auth_key=1885477024-3734efeffc9d48389d902c2c8d50a47c-0-c95610c630855053c9819663e47e0a1c" alt="Limburg Lubricant Solutions" class="loader-logo">
 </div>
 <div class="loader-welcome">
 <div class="loader-welcome-text" id="welcomeText"></div>
@@ -195,9 +204,9 @@ body{background:var(--bg);color:var(--fg);font-family:'Archivo',sans-serif;overf
 
 <!-- Header -->
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/60 border-b border-white/5" id="mainHeader">
-<div class="max-w-[1600px] mx-auto px-4 lg:px-10 py-3 flex items-center justify-between">
-<a href="#" onclick="showStorefront()" class="flex items-center gap-3 group">
-<img src="https://z-cdn-media.chatglm.cn/files/3beb39bd-1b64-4368-b782-8fc9e6330482.png?auth_key=1885394192-8e34d5c8b53244aab906115876c24074-0-44719b1ba6ab7de93c797eda4fb6dc47" alt="Limburg Lubricant Solutions" class="h-10 lg:h-12 w-auto object-contain">
+<div class="max-w-[1600px] mx-auto px-4 lg:px-10 py-2 flex items-center justify-between">
+<a href="#" onclick="showStorefront()" class="flex items-center gap-3 group shrink-0">
+<img src="https://z-cdn-media.chatglm.cn/files/c29f52d1-7a90-4b6c-96cb-83b4ed9eae52.png?auth_key=1885477024-3734efeffc9d48389d902c2c8d50a47c-0-c95610c630855053c9819663e47e0a1c" alt="Limburg Lubricant Solutions" class="h-14 lg:h-20 w-auto max-w-[180px] lg:max-w-[260px] object-contain">
 </a>
 <nav class="hidden lg:flex items-center gap-8">
 <a href="#products-section" class="nav-link">Products</a>
@@ -219,7 +228,7 @@ body{background:var(--bg);color:var(--fg);font-family:'Archivo',sans-serif;overf
 <i class="fas fa-chevron-down text-[10px] text-[var(--muted)]"></i>
 </div>
 <div class="user-dropdown" id="userDropdown">
-<a href="#" onclick="showMyOrders()"><i class="fas fa-receipt w-4 text-center"></i>My Orders</a>
+<a href="#" onclick="showMyOrders('all')"><i class="fas fa-receipt w-4 text-center"></i>My Orders</a>
 <button onclick="logoutUser()"><i class="fas fa-right-from-bracket w-4 text-center"></i>Logout</button>
 </div>
 </div>
@@ -356,7 +365,7 @@ Formulated with <span class="text-[var(--fg)]">CoolTech™ technology</span> to 
 <div class="max-w-[1600px] mx-auto px-4 lg:px-10">
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
 <div>
-<img src="https://z-cdn-media.chatglm.cn/files/3beb39bd-1b64-4368-b782-8fc9e6330482.png?auth_key=1885394192-8e34d5c8b53244aab906115876c24074-0-44719b1ba6ab7de93c797eda4fb6dc47" alt="Logo" class="h-10 lg:h-12 mb-4 object-contain">
+<img src="https://z-cdn-media.chatglm.cn/files/c29f52d1-7a90-4b6c-96cb-83b4ed9eae52.png?auth_key=1885477024-3734efeffc9d48389d902c2c8d50a47c-0-c95610c630855053c9819663e47e0a1c" alt="Logo" class="h-14 lg:h-20 w-auto max-w-[240px] mb-4 object-contain">
 <p class="text-[var(--fg-dim)] text-sm leading-relaxed">Official distributor of PETRONAS lubricants. Premium engine oils with CoolTech™ technology.</p>
 </div>
 <div><div class="font-heading text-sm tracking-wider uppercase mb-4 text-[var(--fg)]">Quick Links</div><div class="space-y-2 text-sm text-[var(--fg-dim)]"><a href="#products-section" class="block hover:text-[var(--accent)] transition-colors">Products</a><a href="#about-section" class="block hover:text-[var(--accent)] transition-colors">About</a><a href="#contact-section" class="block hover:text-[var(--accent)] transition-colors">Contact</a></div></div>
@@ -393,7 +402,7 @@ Formulated with <span class="text-[var(--fg)]">CoolTech™ technology</span> to 
 <div class="modal-content max-w-md">
 <div class="p-8">
 <div class="text-center mb-6">
-<img src="https://z-cdn-media.chatglm.cn/files/3beb39bd-1b64-4368-b782-8fc9e6330482.png?auth_key=1885394192-8e34d5c8b53244aab906115876c24074-0-44719b1ba6ab7de93c797eda4fb6dc47" alt="Logo" class="h-12 mx-auto mb-4 object-contain">
+<img src="https://z-cdn-media.chatglm.cn/files/c29f52d1-7a90-4b6c-96cb-83b4ed9eae52.png?auth_key=1885477024-3734efeffc9d48389d902c2c8d50a47c-0-c95610c630855053c9819663e47e0a1c" alt="Logo" class="h-16 mx-auto mb-4 max-w-[240px] object-contain">
 <h2 class="font-display text-3xl">WELCOME</h2>
 <p class="text-[var(--muted)] text-sm mt-1">Login or create an account to order</p>
 </div>
@@ -442,7 +451,7 @@ Formulated with <span class="text-[var(--fg)]">CoolTech™ technology</span> to 
 <div class="modal-overlay" id="adminLoginModal">
 <div class="modal-content max-w-sm p-8">
 <div class="text-center mb-6">
-<img src="https://z-cdn-media.chatglm.cn/files/3beb39bd-1b64-4368-b782-8fc9e6330482.png?auth_key=1885394192-8e34d5c8b53244aab906115876c24074-0-44719b1ba6ab7de93c797eda4fb6dc47" alt="Logo" class="h-12 mx-auto mb-4 object-contain">
+<img src="https://z-cdn-media.chatglm.cn/files/c29f52d1-7a90-4b6c-96cb-83b4ed9eae52.png?auth_key=1885477024-3734efeffc9d48389d902c2c8d50a47c-0-c95610c630855053c9819663e47e0a1c" alt="Logo" class="h-16 mx-auto mb-4 max-w-[220px] object-contain">
 <h2 class="font-display text-3xl">ADMIN LOGIN</h2>
 <p class="text-[var(--muted)] text-sm mt-2">Enter admin credentials</p>
 </div>
@@ -461,7 +470,7 @@ Formulated with <span class="text-[var(--fg)]">CoolTech™ technology</span> to 
 <div class="admin-sidebar" id="adminSidebar">
 <div class="p-5 border-b border-[var(--border)]">
 <div class="flex items-center gap-3">
-<img src="https://z-cdn-media.chatglm.cn/files/3beb39bd-1b64-4368-b782-8fc9e6330482.png?auth_key=1885394192-8e34d5c8b53244aab906115876c24074-0-44719b1ba6ab7de93c797eda4fb6dc47" alt="Logo" class="h-8 w-auto object-contain">
+<img src="https://z-cdn-media.chatglm.cn/files/c29f52d1-7a90-4b6c-96cb-83b4ed9eae52.png?auth_key=1885477024-3734efeffc9d48389d902c2c8d50a47c-0-c95610c630855053c9819663e47e0a1c" alt="Logo" class="h-10 w-auto max-w-[140px] object-contain">
 <div><div class="font-display text-lg leading-none">ADMIN</div><div class="font-mono text-[8px] text-[var(--muted)] tracking-[.2em]">CONTROL PANEL</div></div>
 </div>
 </div>
@@ -553,8 +562,10 @@ const DEFAULT_PRODUCTS=[
 let state={products:[],cart:[],orders:[],users:[],currentUser:null,adminAuth:false,currentFilter:'All',
 adminSettings:{storeName:'LIMBURG LUBRICANT SOLUTIONS',currency:'$',adminUser:'admin',adminPass:'admin123',phone:'+603-2331 8888',email:'lubricants@petronas.com',address:'Kuala Lumpur, Malaysia'}};
 
+let currentOrderFilter='all';
+
 function loadState(){
-  try{const saved=localStorage.getItem('limburgState');if(saved){state=JSON.parse(saved);return;}}catch(e){}
+  try{const saved=localStorage.getItem('limburgState');if(saved){const parsed=JSON.parse(saved);state={...state,...parsed};if(!state.products||state.products.length===0)state.products=JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));return;}}catch(e){}
   state.products=JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
   state.cart=[];state.orders=[];state.users=[];state.currentUser=null;
   saveState();
@@ -744,15 +755,63 @@ function updateUserUI(){
   }
 }
 
-// ==================== MY ORDERS ====================
-function showMyOrders(){
+// ==================== MY ORDERS (WITH TABS) ====================
+function showMyOrders(filter){
   if(!state.currentUser){openLoginModal();return;}
+  if(filter) currentOrderFilter=filter;
   const userOrders=state.orders.filter(o=>o.userId===state.currentUser.id);
   const modal=document.getElementById('myOrdersModal'),content=document.getElementById('myOrdersContent');
-  if(userOrders.length===0){
-    content.innerHTML='<div class="text-center py-12"><i class="fas fa-receipt text-4xl text-[var(--muted)] mb-4"></i><div class="text-[var(--fg-dim)]">No orders yet</div><p class="text-[var(--muted)] text-sm mt-2">Start shopping to see your orders here</p></div>';
+  
+  // Count orders by category
+  const allCount=userOrders.length;
+  const activeCount=userOrders.filter(o=>['pending','confirmed','shipped'].includes(o.status)).length;
+  const deliveredCount=userOrders.filter(o=>o.status==='delivered').length;
+  const cancelledCount=userOrders.filter(o=>o.status==='cancelled').length;
+  
+  // Filter orders based on current tab
+  let filteredOrders=userOrders;
+  if(currentOrderFilter==='active'){
+    filteredOrders=userOrders.filter(o=>['pending','confirmed','shipped'].includes(o.status));
+  } else if(currentOrderFilter==='delivered'){
+    filteredOrders=userOrders.filter(o=>o.status==='delivered');
+  } else if(currentOrderFilter==='cancelled'){
+    filteredOrders=userOrders.filter(o=>o.status==='cancelled');
+  }
+  
+  // Build tab bar HTML
+  const tabsHtml=`
+    <div class="order-tabs">
+      <button onclick="filterMyOrders('all')" class="order-tab ${currentOrderFilter==='all'?'active':''} ${allCount===0?'empty':''}">
+        <i class="fas fa-list text-[10px]"></i>All<span class="order-tab-count">${allCount}</span>
+      </button>
+      <button onclick="filterMyOrders('active')" class="order-tab ${currentOrderFilter==='active'?'active':''} ${activeCount===0?'empty':''}">
+        <i class="fas fa-clock text-[10px]"></i>Active<span class="order-tab-count">${activeCount}</span>
+      </button>
+      <button onclick="filterMyOrders('delivered')" class="order-tab ${currentOrderFilter==='delivered'?'active':''} ${deliveredCount===0?'empty':''}">
+        <i class="fas fa-circle-check text-[10px]"></i>Delivered<span class="order-tab-count">${deliveredCount}</span>
+      </button>
+      <button onclick="filterMyOrders('cancelled')" class="order-tab ${currentOrderFilter==='cancelled'?'active':''} ${cancelledCount===0?'empty':''}">
+        <i class="fas fa-circle-xmark text-[10px]"></i>Cancelled<span class="order-tab-count">${cancelledCount}</span>
+      </button>
+    </div>
+  `;
+  
+  if(filteredOrders.length===0){
+    const emptyMsgs={
+      'all':'No orders yet',
+      'active':'No active orders',
+      'delivered':'No delivered orders',
+      'cancelled':'No cancelled orders'
+    };
+    const emptySubs={
+      'all':'Start shopping to see your orders here',
+      'active':'Orders that are pending, confirmed, or shipped will appear here',
+      'delivered':'Completed orders will appear here',
+      'cancelled':'Cancelled orders will appear here'
+    };
+    content.innerHTML=tabsHtml+`<div class="text-center py-12"><i class="fas fa-receipt text-4xl text-[var(--muted)] mb-4"></i><div class="text-[var(--fg-dim)]">${emptyMsgs[currentOrderFilter]}</div><p class="text-[var(--muted)] text-sm mt-2">${emptySubs[currentOrderFilter]}</p></div>`;
   } else {
-    content.innerHTML=userOrders.map(o=>{
+    content.innerHTML=tabsHtml+filteredOrders.map(o=>{
       let actionsHtml='';
       if(o.status==='pending' || o.status==='confirmed'){
         actionsHtml += `<button onclick="cancelOrder(${o.id})" class="btn-danger text-[10px] px-3 py-1 mt-3 mr-2"><i class="fas fa-times mr-1"></i>Cancel Order</button>`;
@@ -781,6 +840,10 @@ function showMyOrders(){
   }
   modal.classList.add('open');
 }
+function filterMyOrders(filter){
+  currentOrderFilter=filter;
+  showMyOrders(filter);
+}
 function closeMyOrders(){document.getElementById('myOrdersModal').classList.remove('open');}
 
 function cancelOrder(orderId){
@@ -794,7 +857,7 @@ function cancelOrder(orderId){
   });
   order.status='cancelled';
   saveState();
-  showMyOrders(); // Re-render
+  showMyOrders(currentOrderFilter); // Re-render with current tab
   showToast('Order cancelled successfully','success');
 }
 
@@ -859,8 +922,6 @@ function changeEditQty(itemId, delta){
   // Check stock
   const orderItem=state.orders.flatMap(o=>o.items).find(i=>i.id===itemId);
   const product=state.products.find(p=>p.id===itemId);
-  // For editing, we shouldn't restrict by current stock minus what's already in cart, 
-  // but to be safe, we check against total stock + the quantity currently in this order.
   if(product && delta>0){
     const currentOrder=state.orders.find(o=>o.id===document.querySelector('[onclick^="saveEditedOrder"]').getAttribute('onclick').match(/\d+/)[0]);
     const originalQty=currentOrder.items.find(i=>i.id===itemId).qty;
@@ -871,8 +932,6 @@ function changeEditQty(itemId, delta){
     }
   }
   input.value=newQty;
-  // Trigger total update by finding any order ID, but simpler to just call updateEditTotals globally if needed.
-  // Since we need the orderId, let's extract it from the save button.
   const saveBtn=document.querySelector('[onclick^="saveEditedOrder"]');
   if(saveBtn){
     const orderId=saveBtn.getAttribute('onclick').match(/\d+/)[0];
@@ -947,7 +1006,7 @@ function saveEditedOrder(orderId){
 
   saveState();
   closeEditOrderModal();
-  showMyOrders(); // Re-render
+  showMyOrders(currentOrderFilter); // Re-render with current tab
   showToast('Order updated successfully','success');
 }
 
